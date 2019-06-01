@@ -1,0 +1,34 @@
+//https://codeforces.com/problemset/problem/118/A
+
+#include<iostream>
+#include<string>
+#include<algorithm>
+
+using namespace std;
+
+bool isVowel(char c) {
+	bool vowel = false;
+	if (c == 'A' || c == 'a' || c == 'O' || c == 'o' || c == 'y' || c == 'Y' || c == 'e' || c == 'E' || c == 'U' || c == 'u' || c == 'I' || c == 'i') {
+		vowel = true;
+	}
+	return vowel;
+}
+
+int main(int argc, char** argv)
+{
+	string s,newS;
+	getline(cin, s);
+	int length = s.length();
+	for (int i = 0; i <length; i++) {
+		char part = s.at(i);
+		if (!isVowel(part)) {
+			string st(1,part);
+			newS.append(".");
+			newS.append(st);
+		}
+	}
+	transform(newS.begin(), newS.end(), newS.begin(), ::tolower);
+	cout << newS << endl;
+
+	return 0;
+}
