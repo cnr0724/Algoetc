@@ -1,0 +1,55 @@
+//https://codeforces.com/problemset/problem/158/B
+
+#include<iostream>
+
+using namespace std;
+
+
+int main(int argc, char** argv)
+{
+	int n,total=0;
+	cin >> n;
+	int team[4] = { 0 };
+
+	for (int i = 0; i < n; i++) {
+		int a;
+		cin >> a;
+		team[a-1]++;
+	}
+
+	total += team[3];
+	total += team[1]/2;
+
+	if (team[0] >= team[2]) {
+		total += team[2];
+		team[0] -= team[2];
+
+		if (team[1] % 2 == 0) {
+			if (team[0] % 4 == 0) {
+				total += team[0] / 4;
+			}
+			else {
+				total += team[0] / 4;
+				total++;
+			}
+		}
+		else {
+			if (team[0] % 4 < 3) {
+				total += team[0] / 4;
+				total++;
+			}
+			else {
+				total += team[0] / 4;
+				total += 2;
+			}
+		}
+	}
+	else {
+		total += team[2];
+		if (team[1] % 2 == 1) {
+			total++;
+		}
+	}
+	cout << total << endl;
+	return 0;
+}
