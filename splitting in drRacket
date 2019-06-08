@@ -1,0 +1,15 @@
+#lang racket
+
+(define (pd lst)
+  (define fLst '())
+  (define sLst '())
+  (define tLst '())
+  (let ((a 5))
+    (cons (set! fLst (take lst a))
+          (set! lst (drop lst a))))
+  (let ((a 5))
+    (cons (set! sLst (take lst a))
+          (set! tLst (drop lst a))))
+  (define finalLst (list fLst sLst tLst))
+  finalLst
+)
